@@ -1,3 +1,33 @@
-backend/node_modules/
-backend/.env
+# =========================
+# Backend (Node.js)
+# =========================
 
+# Node modules
+/backend/node_modules/
+
+# Logs
+/backend/*.log
+/backend/logs/
+
+/backend/uploads/  # if this contains user uploads
+
+# Environment files
+/backend/.env
+
+# Optional: OS / IDE files
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# =========================
+# Frontend
+# =========================
+
+# Build / cache folders (if any)
+#/frontend/dist/
+/frontend/node_modules/  # in case frontend uses npm packages
+
+# Optional: OS / IDE files
+.DS_Store
