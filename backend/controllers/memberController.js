@@ -290,22 +290,31 @@ exports.updateMember = async (req, res) => {
 };
 
 // Public: Get active members (publicly viewable)
+// controllers/memberController.js
 exports.getPublicMembers = async (req, res) => {
   try {
     const search = req.query.search?.toLowerCase() || "";
     let rows;
+
     if (db.type === "POSTGRES") {
       const { rows: dbRows } = await db.query(
-        "SELECT id, name, email, phone_number, district, status, profile_pic FROM members WHERE status='ACTIVE' ORDER BY id ASC"
+        "SELECT member_id, name, district, profile_pic FROM members WHERE status='ACTIVE'"
       );
       rows = dbRows;
     } else {
-      rows = db.sheetsData.members.filter(m => m.status === "ACTIVE");
+      rows = db.sheetsData.members
+        .filter(m => m.status === "ACTIVE")
+        .map(m => ({
+          member_id: m.member_id,
+          name: m.name,
+          district: m.district,
+          profile_pic: m.profile_pic
+        }));
     }
 
     if (search) {
       rows = rows.filter(
-        m => m.name.toLowerCase().includes(search) || (m.email && m.email.toLowerCase().includes(search))
+        m => m.name.toLowerCase().includes(search) || m.member_id.toLowerCase().includes(search)
       );
     }
 

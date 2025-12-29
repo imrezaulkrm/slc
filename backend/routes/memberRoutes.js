@@ -3,6 +3,8 @@ const router = express.Router();
 const memberController = require("../controllers/memberController");
 const { verifyToken, allowRoles } = require("../middlewares/authMiddleware");
 
+// memberRoutes.js
+router.get("/public", memberController.getPublicMembers);
 // Public route: submit new member request
 router.post("/request", memberController.submitRequest);
 
@@ -26,8 +28,7 @@ router.delete("/reject/:id", memberController.rejectMember);
 // Update member
 router.put("/:id", memberController.updateMember);
 
-// memberRoutes.js
-router.get("/public", memberController.getPublicMembers);
+
 
 
 
