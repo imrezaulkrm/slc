@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const noticeController = require("../controllers/noticeController");
-const { isAdmin } = require("../middleware/roleMiddleware");
+const { isAdmin } = require("../middlewares/roleMiddleware");
 
 // Public route: get all notices
 router.get("/", noticeController.getAllNotices);

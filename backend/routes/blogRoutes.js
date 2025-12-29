@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const blogController = require("../controllers/blogController");
-const { isAdmin } = require("../middleware/roleMiddleware");
+const { isAdmin } = require("../middlewares/roleMiddleware");
 
 // Create blog (Admin / SuperAdmin)
 router.post("/", isAdmin, blogController.createBlog);

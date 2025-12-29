@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
-const { isSuperAdmin } = require("../middleware/roleMiddleware");
+const { isSuperAdmin } = require("../middlewares/roleMiddleware");
 
 // SuperAdmin only routes
 router.post("/create-admin", isSuperAdmin, userController.createAdmin);

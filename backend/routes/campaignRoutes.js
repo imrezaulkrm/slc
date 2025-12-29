@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const campaignController = require("../controllers/campaignController");
-const { isAdmin } = require("../middleware/roleMiddleware");
+const { isAdmin } = require("../middlewares/roleMiddleware");
 
 // Create campaign
 router.post("/", isAdmin, campaignController.createCampaign);
